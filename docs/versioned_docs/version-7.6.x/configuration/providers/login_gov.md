@@ -19,7 +19,7 @@ First, register your application in the dashboard.  The important bits are:
 * Identity protocol:  make this `Openid connect`
 * Issuer:  do what they say for OpenID Connect.  We will refer to this string as `${LOGINGOV_ISSUER}`.
 * Public key:  This is a self-signed certificate in .pem format generated from a 2048-bit RSA private key.
-  A quick way to do this is 
+  A quick way to do this is
   `openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 3650 -nodes -subj '/C=US/ST=Washington/L=DC/O=GSA/OU=18F/CN=localhost'`.
   The contents of the `key.pem` shall be referred to as `${OAUTH2_PROXY_JWT_KEY}`.
 * Return to App URL:  Make this be `http://localhost:4180/`
@@ -59,7 +59,7 @@ proxy, and you would use real hostnames everywhere.
 
 #### Skip OIDC discovery
 
-Some providers do not support OIDC discovery via their issuer URL, so oauth2-proxy cannot simply grab the authorization, 
+Some providers do not support OIDC discovery via their issuer URL, so oauth2-proxy cannot simply grab the authorization,
 token and jwks URI endpoints from the provider's metadata.
 
 In this case, you can set the `--skip-oidc-discovery` option, and supply those required endpoints manually:

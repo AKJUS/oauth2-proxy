@@ -20,7 +20,7 @@ To configure the OIDC provider for Dex, perform the following steps:
 
    See the [getting started guide](https://dexidp.io/docs/getting-started/) for more details.
 
-2. Setup oauth2-proxy with the correct provider and using the default ports and callbacks. Add a configuration block to 
+2. Setup oauth2-proxy with the correct provider and using the default ports and callbacks. Add a configuration block to
    the `staticClients` section of `examples/config-dev.yaml`:
 
     ```
@@ -69,7 +69,7 @@ To configure the OIDC provider for Okta, perform the following steps:
 2. (OPTIONAL) If you want to configure authorization scopes and claims to be passed on to multiple applications,
    you may wish to configure an authorization server for each application. Otherwise, the provided `default` will work.
    * Navigate to **Security** then select **API**
-   * Click **Add Authorization Server**, if this option is not available you may require an additional license for a custom 
+   * Click **Add Authorization Server**, if this option is not available you may require an additional license for a custom
      authorization server.
    * Fill out the **Name** with something to describe the application you are protecting. e.g. 'Example App'.
    * For **Audience**, pick the URL of the application you wish to protect: https://example.corp.com
@@ -104,7 +104,7 @@ To configure the OIDC provider for Okta, perform the following steps:
     skip_provider_button = true
     ```
 
-The `oidc_issuer_url` is based on URL from your **Authorization Server**'s **Issuer** field in step 2, or simply 
+The `oidc_issuer_url` is based on URL from your **Authorization Server**'s **Issuer** field in step 2, or simply
 https://corp.okta.com. The `client_id` and `client_secret` are configured in the application settings.
 Generate a unique `cookie_secret` to encrypt the cookie.
 

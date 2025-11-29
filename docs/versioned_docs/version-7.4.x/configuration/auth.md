@@ -72,10 +72,10 @@ Note: The user is checked against the group members list on initial authenticati
 
 ### Azure Auth Provider
 
-1. Add an application: go to [https://portal.azure.com](https://portal.azure.com), choose **Azure Active Directory**, select 
+1. Add an application: go to [https://portal.azure.com](https://portal.azure.com), choose **Azure Active Directory**, select
 **App registrations** and then click on **New registration**.
-2. Pick a name, check the supported account type(single-tenant, multi-tenant, etc). In the **Redirect URI** section create a new 
-**Web** platform entry for each app that you want to protect by the oauth2 proxy(e.g. 
+2. Pick a name, check the supported account type(single-tenant, multi-tenant, etc). In the **Redirect URI** section create a new
+**Web** platform entry for each app that you want to protect by the oauth2 proxy(e.g.
 https://internal.yourcompanycom/oauth2/callback). Click **Register**.
 3. Next we need to add group read permissions for the app registration, on the **API Permissions** page of the app, click on
 **Add a permission**, select **Microsoft Graph**, then select **Application permissions**, then click on **Group** and select
@@ -105,11 +105,11 @@ in the App registration manifest file.
 ```
 
 ***Notes***:
-- When using v2.0 Azure Auth endpoint (`https://login.microsoftonline.com/{tenant-id}/v2.0`) as `--oidc_issuer_url`, in conjunction 
+- When using v2.0 Azure Auth endpoint (`https://login.microsoftonline.com/{tenant-id}/v2.0`) as `--oidc_issuer_url`, in conjunction
 with `--resource` flag, be sure to append `/.default` at the end of the resource name. See
 https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope for more details.
-- When using the Azure Auth provider with nginx and the cookie session store you may find the cookie is too large and doesn't 
-get passed through correctly. Increasing the proxy_buffer_size in nginx or implementing the [redis session storage](sessions.md#redis-storage) 
+- When using the Azure Auth provider with nginx and the cookie session store you may find the cookie is too large and doesn't
+get passed through correctly. Increasing the proxy_buffer_size in nginx or implementing the [redis session storage](sessions.md#redis-storage)
 should resolve this.
 
 ### ADFS Auth Provider
@@ -181,7 +181,7 @@ If you are using GitHub enterprise, make sure you set the following to the appro
 
 ### Keycloak Auth Provider
 
-:::note 
+:::note
 This is the legacy provider for Keycloak, use [Keycloak OIDC Auth Provider](#keycloak-oidc-auth-provider) if possible.
 :::
 
@@ -202,7 +202,7 @@ Make sure you set the following to the appropriate url:
     --keycloak-group=<first_allowed_user_group>
     --keycloak-group=<second_allowed_user_group>
 ```
-    
+
 For group based authorization, the optional `--keycloak-group` (legacy) or `--allowed-group` (global standard)
 flags can be used to specify which groups to limit access to.
 

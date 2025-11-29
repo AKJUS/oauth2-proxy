@@ -52,12 +52,12 @@ jobs:
       run: |
         git config --local user.name "github-actions[bot]"
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-    
+
     - name: Setup node
       uses: actions/setup-node@v6
       with:
         node-version-file: docs/package.json
-      
+
     - name: Update documentation
       run: |
         cd docs
@@ -75,7 +75,7 @@ jobs:
 
         sed -i "s/(current release is .*)/(current release is \`v${FULL_VERSION}\`)/g" docs/installation.md
         sed -i "s/(current release is .*)/(current release is \`v${FULL_VERSION}\`)/g" versioned_docs/version-${VERSION}/installation.md
-    
+
     - name: Update Changelog
       run: |
         VERSION=${{ steps.validate.outputs.version }}
@@ -95,7 +95,7 @@ jobs:
         EOF
 
         echo -e "$(cat /tmp/CHANGELOG.prepend)\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
-    
+
     - name: Update development files
       run: |
         VERSION=${{ steps.validate.outputs.version }}
@@ -110,7 +110,7 @@ jobs:
         git checkout -b release/v${VERSION}
         git commit -am "update to release version v${VERSION}"
         git push -u origin release/v${VERSION}
-    
+
     - name: Create PR
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

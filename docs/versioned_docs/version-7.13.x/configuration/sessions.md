@@ -50,7 +50,7 @@ to which the session is stored. The encoded session is encrypted with the secret
 in redis via the `SETEX` command.
 
 Encrypting every session uniquely protects the refresh/access/id tokens stored in the session from
-disclosure. Additionally, the browser only has to send a short Cookie with every request and not the whole JWT, 
+disclosure. Additionally, the browser only has to send a short Cookie with every request and not the whole JWT,
 which can get quite big.
 
 Two settings are used to configure the OAuth2 Proxy cookie lifetime:
@@ -65,9 +65,9 @@ expired.
 
 The "cookie-refresh" value controls when OAuth2 Proxy tries to refresh an Access-Token. If it is set to "0", the
 Access-Token will never be refreshed, even if it is already expired and a valid Refresh-Token is available. If set, OAuth2-Proxy will
-refresh the Access-Token after this many seconds whether it is still valid or not. According to the official OAuth2.0 specification 
-Access-Tokens are not required to follow a specific format. Therefore OAuth2-Proxy cannot check for any expiry date without an 
-introspection endpoint. If an Access-Token expires and you have not set a corresponding "cookie-refresh" value, you will likely 
+refresh the Access-Token after this many seconds whether it is still valid or not. According to the official OAuth2.0 specification
+Access-Tokens are not required to follow a specific format. Therefore OAuth2-Proxy cannot check for any expiry date without an
+introspection endpoint. If an Access-Token expires and you have not set a corresponding "cookie-refresh" value, you will likely
 encounter expiry issues.
 
 Caveat: It can happen that the Access-Token is valid for e.g. "1m" and a request happens after exactly "59s".
@@ -94,6 +94,6 @@ Redis Cluster is available to be the backend store as well. To leverage it, you 
 
 Note that flags `--redis-use-sentinel=true` and `--redis-use-cluster=true` are mutually exclusive.
 
-Note, if Redis timeout option is set to non-zero, the `--redis-connection-idle-timeout` 
-must be less than [Redis timeout option](https://redis.io/docs/reference/clients/#client-timeouts). For example: if either redis.conf includes 
+Note, if Redis timeout option is set to non-zero, the `--redis-connection-idle-timeout`
+must be less than [Redis timeout option](https://redis.io/docs/reference/clients/#client-timeouts). For example: if either redis.conf includes
 `timeout 15` or using `CONFIG SET timeout 15` the `--redis-connection-idle-timeout` must be at least `--redis-connection-idle-timeout=14`

@@ -6,7 +6,7 @@ dex:
         paths:
         - path: /
           pathType: ImplementationSpecific
-  grpc: 
+  grpc:
     enabled: false
   certs:
     grpc:

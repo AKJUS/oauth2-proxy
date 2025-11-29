@@ -18,14 +18,14 @@ import TabItem from '@theme/TabItem';
   ```shell
   python -c 'import os,base64; print(base64.urlsafe_b64encode(os.urandom(32)).decode())'
   ```
-  
+
   </TabItem>
   <TabItem value="bash" label="Bash">
 
   ```shell
   dd if=/dev/urandom bs=32 count=1 2>/dev/null | base64 | tr -d -- '\n' | tr -- '+/' '-_' ; echo
   ```
-  
+
   </TabItem>
   <TabItem value="openssl" label="OpenSSL">
 

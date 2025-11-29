@@ -19,7 +19,7 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      
+
       - uses: actions/setup-node@v6
         with:
           # renovate: datasource=node-version depName=node
@@ -47,7 +47,7 @@ jobs:
         run: |
           npm install
           npm run build
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
