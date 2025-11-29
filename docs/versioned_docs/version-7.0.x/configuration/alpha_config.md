@@ -209,4 +209,3 @@ Requests will be proxied to this upstream if the path matches the request path.
 (**Appears on:** [AlphaOptions](#alphaoptions))
 
 Upstreams is a collection of definitions for upstream servers.
-

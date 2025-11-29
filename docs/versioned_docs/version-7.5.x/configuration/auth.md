@@ -50,7 +50,7 @@ It's recommended to refresh sessions on a short interval (1h) with `cookie-refre
 
 #### Restrict auth to specific Google groups on your domain. (optional)
 
-1.  Create a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) and download the json 
+1.  Create a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) and download the json
 file if you're not using [Application Default Credentials / Workload Identity / Workload Identity Federation (recommended)](#using-application-default-credentials-adc--workload-identity--workload-identity-federation-recommended).
 2.  Make note of the Client ID for a future step.
 3.  Under "APIs & Auth", choose APIs.
@@ -82,10 +82,10 @@ Note: The user is checked against the group members list on initial authenticati
 
 ### Azure Auth Provider
 
-1. Add an application: go to [https://portal.azure.com](https://portal.azure.com), choose **Azure Active Directory**, select 
+1. Add an application: go to [https://portal.azure.com](https://portal.azure.com), choose **Azure Active Directory**, select
 **App registrations** and then click on **New registration**.
-2. Pick a name, check the supported account type(single-tenant, multi-tenant, etc). In the **Redirect URI** section create a new 
-**Web** platform entry for each app that you want to protect by the oauth2 proxy(e.g. 
+2. Pick a name, check the supported account type(single-tenant, multi-tenant, etc). In the **Redirect URI** section create a new
+**Web** platform entry for each app that you want to protect by the oauth2 proxy(e.g.
 https://internal.yourcompanycom/oauth2/callback). Click **Register**.
 3. Next we need to add group read permissions for the app registration, on the **API Permissions** page of the app, click on
 **Add a permission**, select **Microsoft Graph**, then select **Application permissions**, then click on **Group** and select
@@ -115,11 +115,11 @@ in the App registration manifest file.
 ```
 
 ***Notes***:
-- When using v2.0 Azure Auth endpoint (`https://login.microsoftonline.com/{tenant-id}/v2.0`) as `--oidc_issuer_url`, in conjunction 
+- When using v2.0 Azure Auth endpoint (`https://login.microsoftonline.com/{tenant-id}/v2.0`) as `--oidc_issuer_url`, in conjunction
 with `--resource` flag, be sure to append `/.default` at the end of the resource name. See
 https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope for more details.
-- When using the Azure Auth provider with nginx and the cookie session store you may find the cookie is too large and doesn't 
-get passed through correctly. Increasing the proxy_buffer_size in nginx or implementing the [redis session storage](sessions.md#redis-storage) 
+- When using the Azure Auth provider with nginx and the cookie session store you may find the cookie is too large and doesn't
+get passed through correctly. Increasing the proxy_buffer_size in nginx or implementing the [redis session storage](sessions.md#redis-storage)
 should resolve this.
 
 ### ADFS Auth Provider
@@ -191,7 +191,7 @@ If you are using GitHub enterprise, make sure you set the following to the appro
 
 ### Keycloak Auth Provider
 
-:::note 
+:::note
 This is the legacy provider for Keycloak, use [Keycloak OIDC Auth Provider](#keycloak-oidc-auth-provider) if possible.
 :::
 
@@ -212,7 +212,7 @@ Make sure you set the following to the appropriate url:
     --keycloak-group=<first_allowed_user_group>
     --keycloak-group=<second_allowed_user_group>
 ```
-    
+
 For group based authorization, the optional `--keycloak-group` (legacy) or `--allowed-group` (global standard)
 flags can be used to specify which groups to limit access to.
 
@@ -253,14 +253,14 @@ Keycloak has updated its admin console and as of version 19.0.0, the new admin c
 
 The following example shows how to create a simple OIDC client using the new Keycloak admin2 console. However, for best practices, it is recommended to consult the Keycloak documentation.
 
-The OIDC client must be configured with an _audience mapper_ to include the client's name in the `aud` claim of the JWT token.  
+The OIDC client must be configured with an _audience mapper_ to include the client's name in the `aud` claim of the JWT token.
 The `aud` claim specifies the intended recipient of the token, and OAuth2 Proxy expects a match against the values of either `--client-id` or `--oidc-extra-audience`.
 
 _In Keycloak, claims are added to JWT tokens through the use of mappers at either the realm level using "client scopes" or through "dedicated" client mappers._
 
 **Creating the client**
 
-1. Create a new OIDC client in your Keycloak realm by navigating to:  
+1. Create a new OIDC client in your Keycloak realm by navigating to:
    **Clients** -> **Create client**
 * **Client Type** 'OpenID Connect'
 * **Client ID** `<your client's id>`, please complete the remaining fields as appropriate and click **Next**.
@@ -274,12 +274,12 @@ _In Keycloak, claims are added to JWT tokens through the use of mappers at eithe
             * _Save the configuration._
     * Under the **Credentials** tab you will now be able to locate `<your client's secret>`.
 2. Configure a dedicated *audience mapper* for your client by navigating to **Clients** -> **\<your client's id\>** -> **Client scopes**.
-* Access the dedicated mappers pane by clicking **\<your client's id\>-dedicated**, located under *Assigned client scope*.  
+* Access the dedicated mappers pane by clicking **\<your client's id\>-dedicated**, located under *Assigned client scope*.
   _(It should have a description of "Dedicated scope and mappers for this client")_
     * Click **Configure a new mapper** and select **Audience**
         * **Name** 'aud-mapper-\<your client's id\>'
         * **Included Client Audience** select `<your client's id>` from the dropdown.
-            * _OAuth2 proxy can be set up to pass both the access and ID JWT tokens to your upstream services. 
+            * _OAuth2 proxy can be set up to pass both the access and ID JWT tokens to your upstream services.
               If you require additional audience entries, you can use the **Included Custom Audience** field in addition to the "Included Client Audience" dropdown. Note that the "aud" claim of a JWT token should be limited and only specify its intended recipients._
         * **Add to ID token** 'On'
         * **Add to access token** 'On' - [#1916](https://github.com/oauth2-proxy/oauth2-proxy/pull/1916)
@@ -290,7 +290,7 @@ You should now be able to create a test user in Keycloak and get access to the O
 
 **Authorization**
 
-_OAuth2 Proxy will perform authorization by requiring a valid user, this authorization can be extended to take into account a user's membership in Keycloak `groups`, `realm roles`, and `client roles` using the keycloak-oidc provider options   
+_OAuth2 Proxy will perform authorization by requiring a valid user, this authorization can be extended to take into account a user's membership in Keycloak `groups`, `realm roles`, and `client roles` using the keycloak-oidc provider options
 `--allowed-role` or `--allowed-group`_
 
 **Roles**
@@ -313,14 +313,14 @@ _Assign a role to a user_
 
 Keycloak "realm roles" can be authorized using the `--allowed-role=<realm role name>` option, while "client roles" can be evaluated using `--allowed-role=<your client's id>:<client role name>`.
 
-You may limit the _realm roles_ included in the JWT tokens for any given client by navigating to:  
-**Clients** -> `<your client's id>` -> **Client scopes** ->  _\<your client's id\>-dedicated_ -> **Scope**  
+You may limit the _realm roles_ included in the JWT tokens for any given client by navigating to:
+**Clients** -> `<your client's id>` -> **Client scopes** ->  _\<your client's id\>-dedicated_ -> **Scope**
 Disabling **Full scope allowed** activates the **Assign role** option, allowing you to select which roles, if assigned to a user, will be included in the user's JWT tokens. This can be useful when a user has many associated roles, and you want to reduce the size and impact of the JWT token.
 
 
 **Groups**
 
-You may also do authorization on group memberships by using the OAuth2 Proxy option `--allowed-group`.   
+You may also do authorization on group memberships by using the OAuth2 Proxy option `--allowed-group`.
 We will only do a brief description of creating the required _client scope_ **groups** and refer you to read the Keycloak documentation.
 
 To summarize, the steps required to authorize Keycloak group membership with OAuth2 Proxy are as follows:
@@ -330,7 +330,7 @@ To summarize, the steps required to authorize Keycloak group membership with OAu
     * Set the "Token Claim Name" to **groups** or customize by matching it to the `--oidc-groups-claim` option of OAuth2 Proxy.
     * If the "Full group path" option is selected, you need to include a "/" separator in the group names defined in the `--allowed-group` option of OAuth2 Proxy. Example: "/groupname" or "/groupname/childgroup".
 
-After creating the _Client Scope_ named _groups_ you will need to attach it to your client.  
+After creating the _Client Scope_ named _groups_ you will need to attach it to your client.
 **Clients** -> `<your client's id>` -> **Client scopes** -> **Add client scope** -> Select **groups** and choose Optional and you should now have a client that maps group memberships into the JWT tokens so that Oauth2 Proxy may evaluate them.
 
 Create a group by navigating to **Groups** -> **Create group** and _add_ your test user as a member.
@@ -342,7 +342,7 @@ Keycloak also has the option of attaching roles to groups, please refer to the K
 **Tip**
 
 To check if roles or groups are added to JWT tokens, you can preview a users token in the Keycloak console by following these steps:
-**Clients** -> `<your client's id>` -> **Client scopes** -> **Evaluate**.  
+**Clients** -> `<your client's id>` -> **Client scopes** -> **Evaluate**.
 Select a _realm user_ and optional _scope parameters_ such as groups, and generate the JSON representation of an access or id token to examine its contents.
 
 

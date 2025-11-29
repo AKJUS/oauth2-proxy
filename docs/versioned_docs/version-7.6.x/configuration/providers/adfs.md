@@ -14,6 +14,6 @@ title: ADFS
    --client-secret=<value from step 3>
 ```
 
-Note: When using the ADFS Auth provider with nginx and the cookie session store you may find the cookie is too large and 
-doesn't get passed through correctly. Increasing the proxy_buffer_size in nginx or implementing the 
+Note: When using the ADFS Auth provider with nginx and the cookie session store you may find the cookie is too large and
+doesn't get passed through correctly. Increasing the proxy_buffer_size in nginx or implementing the
 [redis session storage](../sessions.md#redis-storage) should resolve this.

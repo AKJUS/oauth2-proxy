@@ -11,8 +11,8 @@ title: Azure
 3. Next we need to add group read permissions for the app registration, on the **API Permissions** page of the app, click on
    **Add a permission**, select **Microsoft Graph**, then select **Application permissions**, then click on **Group** and select
    **Group.Read.All**. Hit **Add permissions** and then on **Grant admin consent** (you might need an admin to do this).
-   <br/>**IMPORTANT**: Even if this permission is listed with **"Admin consent required=No"** the consent might actually 
-   be required, due to AAD policies you won't be able to see. If you get a **"Need admin approval"** during login, 
+   <br/>**IMPORTANT**: Even if this permission is listed with **"Admin consent required=No"** the consent might actually
+   be required, due to AAD policies you won't be able to see. If you get a **"Need admin approval"** during login,
    most likely this is what you're missing!
 4. Next, if you are planning to use v2.0 Azure Auth endpoint, go to the **Manifest** page and set `"accessTokenAcceptedVersion": 2`
    in the App registration manifest file.
@@ -42,5 +42,5 @@ title: Azure
   with `--resource` flag, be sure to append `/.default` at the end of the resource name. See
   https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope for more details.
 - When using the Azure Auth provider with nginx and the cookie session store you may find the cookie is too large and doesn't
-  get passed through correctly. Increasing the proxy_buffer_size in nginx or implementing the 
+  get passed through correctly. Increasing the proxy_buffer_size in nginx or implementing the
   [redis session storage](../sessions.md#redis-storage) should resolve this.

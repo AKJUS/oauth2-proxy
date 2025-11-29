@@ -303,7 +303,7 @@ func TestGoogleProvider_getUserGroups(t *testing.T) {
 						"name": "Group 1"
 					},
 					{
-						"kind": "admin#directory#group", 
+						"kind": "admin#directory#group",
 						"id": "2",
 						"email": "group2@example.com",
 						"name": "Group 2"

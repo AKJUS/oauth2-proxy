@@ -50,7 +50,7 @@ to which the session is stored. The encoded session is encrypted with the secret
 in redis via the `SETEX` command.
 
 Encrypting every session uniquely protects the refresh/access/id tokens stored in the session from
-disclosure. Additionally, the browser only has to send a short Cookie with every request and not the whole JWT, 
+disclosure. Additionally, the browser only has to send a short Cookie with every request and not the whole JWT,
 which can get quite big.
 
 Two settings are used to configure the OAuth2 Proxy cookie lifetime:
@@ -92,6 +92,6 @@ Redis Cluster is available to be the backend store as well. To leverage it, you 
 
 Note that flags `--redis-use-sentinel=true` and `--redis-use-cluster=true` are mutually exclusive.
 
-Note, if Redis timeout option is set to non-zero, the `--redis-connection-idle-timeout` 
-must be less than [Redis timeout option](https://redis.io/docs/reference/clients/#client-timeouts). For example: if either redis.conf includes 
+Note, if Redis timeout option is set to non-zero, the `--redis-connection-idle-timeout`
+must be less than [Redis timeout option](https://redis.io/docs/reference/clients/#client-timeouts). For example: if either redis.conf includes
 `timeout 15` or using `CONFIG SET timeout 15` the `--redis-connection-idle-timeout` must be at least `--redis-connection-idle-timeout=14`

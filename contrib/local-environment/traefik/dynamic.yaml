@@ -9,7 +9,7 @@ http:
       rule: "Host(`httpbin.oauth2-proxy.localhost`)"
       service: httpbin-service
       middlewares:
-        - oauth-auth-redirect # redirects all unauthenticated to oauth2 signin    
+        - oauth-auth-redirect # redirects all unauthenticated to oauth2 signin
     httpbin-route-2:
       rule: "Host(`httpbin.oauth2-proxy.localhost`) && PathPrefix(`/no-auto-redirect`)"
       service: httpbin-service
