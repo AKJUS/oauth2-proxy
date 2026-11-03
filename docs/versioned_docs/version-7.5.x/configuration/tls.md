@@ -28,8 +28,8 @@ There are two recommended configurations:
 
 2.  With this configuration approach the customization of the TLS settings is limited.
 
-    The minimal acceptable TLS version can be set with `--tls-min-version=TLS1.3`. 
-    The defaults set `TLS1.2` as the minimal version. 
+    The minimal acceptable TLS version can be set with `--tls-min-version=TLS1.3`.
+    The defaults set `TLS1.2` as the minimal version.
     Regardless of the minimum version configured, `TLS1.3` is currently always used as the maximal version.
 
     TLS server side cipher suites can be specified with `--tls-cipher-suite=TLS_RSA_WITH_RC4_128_SHA`.

@@ -20,7 +20,7 @@ on:
       - 'docs/**'
   schedule:
     - cron: '0 15 * * 2'
-      
+
 jobs:
   CodeQL-Build:
 

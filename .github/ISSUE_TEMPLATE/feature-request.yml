@@ -49,4 +49,3 @@ body:
         - srht
     validations:
       required: false
-

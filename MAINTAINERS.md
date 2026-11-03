@@ -13,7 +13,7 @@ by our [project governance](GOVERNANCE.md).
 
 ## Emeritus Maintainers
 
-We would like to highlight that this project does have prior maintainers and 
+We would like to highlight that this project does have prior maintainers and
 core contributors that, if they so wished, could (and should) be granted the
 status of emeritus maintainers.
 

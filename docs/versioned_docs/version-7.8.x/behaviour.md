@@ -23,4 +23,4 @@ title: Behaviour
 
 ---
 
-Note: The proxy also provides a number of useful [endpoints](features/endpoints.md) for monitoring and management. 
+Note: The proxy also provides a number of useful [endpoints](features/endpoints.md) for monitoring and management.
