@@ -163,7 +163,7 @@ injectResponseHeaders:
           value: c3VwZXItc2VjcmV0LXBhc3N3b3Jk # base64 encoded password
 ```
 
-**Value sources:** 
+**Value sources:**
 * `claimSource` - `claim` (session claims either from id token or from profile URL)
 * `secretSource` - `value` (base64), `fromFile` (file path)
 

@@ -3,7 +3,7 @@ id: cidaas
 title: Cidaas
 ---
 
-[Cidaas](https://www.cidaas.com/) is an Identity as a Service (IDaaS) solution that provides authentication and authorization services. 
+[Cidaas](https://www.cidaas.com/) is an Identity as a Service (IDaaS) solution that provides authentication and authorization services.
 It supports various protocols including OpenID Connect, OAuth 2.0, and SAML.
 
 However, Cidaas provides groups and their roles as hierarchical claims, which are not supported by oauth2-proxy yet.

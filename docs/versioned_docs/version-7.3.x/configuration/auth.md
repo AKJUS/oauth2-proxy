@@ -158,7 +158,7 @@ If you are using GitHub enterprise, make sure you set the following to the appro
 
 ### Keycloak Auth Provider
 
-:::note 
+:::note
 This is the legacy provider for Keycloak, use [Keycloak OIDC Auth Provider](#keycloak-oidc-auth-provider) if possible.
 :::
 
@@ -179,7 +179,7 @@ Make sure you set the following to the appropriate url:
     --keycloak-group=<first_allowed_user_group>
     --keycloak-group=<second_allowed_user_group>
 ```
-    
+
 For group based authorization, the optional `--keycloak-group` (legacy) or `--allowed-group` (global standard)
 flags can be used to specify which groups to limit access to.
 
